@@ -1,0 +1,136 @@
+
+/* ============ ADD HERE YOUR CUSTOM SCSS or  plain CSS CODE. ============ 
+
+HOW DOES IT WORK?
+
+    Edit this file, save, 
+    view page as admin:
+    The style will be AUTOMATICALLY recompiled and 
+    your new CSS bundle will be reloaded via ajax to show 
+    the new styling edits.
+
+NOTICE for beginners: 
+
+    CODE HERE YOUR MASTERPIECE, but before that, if you haven't yet,
+    please take your time to understand and study how Bootstrap works.
+    It can save you a lot of time,
+    eg. to standardize project colors, or fully customize typography.
+    First of all, have a ride in the WordPress Customizer.
+    Then learn to use Bootstrap 4 Classes and utilities.
+    If you come from the CSS world, take some time to study the basic of SASS. It's very powerful.
+    With great powers...you are warned
+
+HOW TO REFERENCE ASSETS AND IMAGES 
+    [BREAKING NEWS] The generated CSS bundle is now called from the Theme folder 
+    so relative paths work as expected on a standard WordPress Theme.
+    So it's not like before.
+
+ 
+************************************************		*/
+//a demo statement - uncomment to see page turn red and blush
+//body { background: red; opacity: 0.3;} 
+
+//open menus on hover
+//.dropdown:hover>.dropdown-menu { display: block;}
+a {
+		text-decoration: none;
+	}
+#wrapper-navbar {
+	#logo-tagline-wrap {
+		max-width: 200px;
+		margin: 15px 0px 0px;
+	}
+	.navbar {
+		padding: 0px 0px 15px 0px;
+	}
+	li.menu-item {
+		position: relative;
+		padding: 45px 15px 0px;
+		
+		.nav-link {
+			color: $secondary;
+			padding: 0px;
+		}
+		&.current_page_item, &:hover {
+			.nav-link {
+				color: $primary;
+			}
+		    &:before {
+		      content: '';
+		      width: 30px;
+		      height: 15px; /* as the half of the width */
+		      background-color: $primary;
+		      border-bottom-left-radius: 15px;  /* 100px of height + 10px of border */
+		      border-bottom-right-radius: 15px; /* 100px of height + 10px of border */
+		      border-bottom: 0;
+		      position: absolute;
+		      top: -5px;
+		      left: 0;
+		      right: 0;
+		      margin: 0 auto;
+		      transition: all 0.2s ease-in-out 0s;
+		    	-o-transition: all 0.2s ease-in-out 0s;
+		    	-ms-transition: all 0.2s ease-in-out 0s;
+		    	-moz-transition: all 0.2s ease-in-out 0s;
+		    	-webkit-transition: all 0.2s ease-in-out 0s;
+		
+		      @include media-breakpoint-down(md) {
+		        display: none!important;
+		      }
+	    }
+	  }
+	}
+}
+div.container-fluid.hdr {
+  padding: 120px 0px;
+  text-align: center;
+  position: relative;
+
+  .vrly {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    opacity: 0.9;
+  }
+
+  h1 {
+    font-size: 55px;
+    color: #fff;
+
+    @include media-breakpoint-down(md) {
+      font-size: 30px;
+    }
+  }
+
+  p {
+    font-size: 24px;
+    color: #fff;
+    font-weight: 400;
+  }
+  a.btn {
+    margin-top: 30px;
+    padding: 15px 45px;
+
+    &:hover {
+      background: #fff;
+      border: 1px solid #fff!important;
+      color: $primary;
+    }
+  }
+}
+div.container-fluid.brdcrmbs {
+	margin-top: 20px;
+	margin-bottom: 20px;
+	text-transform: lowercase;
+
+	span.breadcrumb_last {
+		color: #000;
+		font-weight: bold;
+	}
+	a {
+		color: #000;
+	}
+
+}

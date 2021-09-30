@@ -8,15 +8,15 @@ get_header();
 <div class="container-fluid cntnt">
 	<div class="container">
 	    <div class="row">
-	        <div class="col-md-10 offset-md-1 py-5">
-	            <?php 
-	
-	            if ( have_posts() ) : 
+	        <div class="col-12">
+	            <?php
+
+	            if ( have_posts() ) :
 	                while ( have_posts() ) : the_post();
 	                    the_content();
 	                endwhile;
 	            else :
-	                _e( 'Sorry, no posts matched your criteria.', 'textdomain' );
+	                _e( 'Er is niets te vinden.', 'wbmz' );
 	            endif;
 	            ?>
 	        </div>

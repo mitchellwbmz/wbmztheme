@@ -82,6 +82,7 @@ function wbmz_create_post_type() {
         'hierarchical' => true,
         'has_archive' => false,
         "rewrite" => array( 'slug' => false, 'with_front'	=> false ),
+        'show_in_rest' => true,
         'supports' => array(
           'title',
           'editor',
@@ -89,6 +90,7 @@ function wbmz_create_post_type() {
           'excerpt',
           'thumbnail',
           'revisions',
+          'title-tag',
           'page-attributes'
         ),
         'can_export' => true
@@ -113,6 +115,7 @@ function wbmz_create_post_type() {
           'public' => true,
           'hierarchical' => true,
           'has_archive' => false,
+          'show_in_rest' => true,
           "rewrite" => array( 'slug' => false, 'with_front'	=> false ),
           'supports' => array(
             'title',
@@ -121,6 +124,7 @@ function wbmz_create_post_type() {
             'excerpt',
             'thumbnail',
             'revisions',
+            'title-tag',
             'page-attributes'
           ),
           'can_export' => true
@@ -145,6 +149,7 @@ function wbmz_create_post_type() {
             'public' => true,
             'hierarchical' => true,
             'has_archive' => false,
+            'show_in_rest' => true,
             "rewrite" => array( 'slug' => false, 'with_front'	=> false ),
             'supports' => array(
               'title',
@@ -153,15 +158,50 @@ function wbmz_create_post_type() {
               'excerpt',
               'thumbnail',
               'revisions',
+              'title-tag',
               'page-attributes'
             ),
             'can_export' => true
         ));
 
+        register_post_type('trainingen',
+              array(
+              'labels' => array(
+                  'name' => __('Trainingen', 'wbmz'),
+                  'singular_name' => __('Training', 'wbmz'),
+                  'add_new' => __('Nieuwe training', 'wbmz'),
+                  'add_new_item' => __('Voeg nieuwe training toe', 'wbmz'),
+                  'edit' => __('Wijzig', 'wbmz'),
+                  'edit_item' => __('Wijzig training', 'wbmz'),
+                  'new_item' => __('Nieuwe training', 'wbmz'),
+                  'view' => __('Bekijk training', 'wbmz'),
+                  'view_item' => __('Bekijk training', 'wbmz'),
+                  'search_items' => __('Zoek training', 'wbmz'),
+                  'not_found' => __('Geen training gevonden', 'wbmz'),
+                  'not_found_in_trash' => __('Geen training gevonden in de prullenbak', 'wbmz')
+              ),
+              'public' => true,
+              'hierarchical' => true,
+              'has_archive' => false,
+              'show_in_rest' => true,
+              "rewrite" => array( 'slug' => false, 'with_front'	=> false ),
+              'supports' => array(
+                'title',
+                'editor',
+                'author',
+                'excerpt',
+                'thumbnail',
+                'revisions',
+                'title-tag',
+                'page-attributes'
+              ),
+              'can_export' => true
+          ));
+
         register_post_type('vacatures',
               array(
               'labels' => array(
-                  'name' => __('vacatures', 'wbmz'),
+                  'name' => __('Vacatures', 'wbmz'),
                   'singular_name' => __('Vacatures', 'wbmz'),
                   'add_new' => __('Nieuwe vacature', 'wbmz'),
                   'add_new_item' => __('Voeg nieuwe vacature toe', 'wbmz'),
@@ -177,6 +217,7 @@ function wbmz_create_post_type() {
               'public' => true,
               'hierarchical' => true,
               'has_archive' => false,
+              'show_in_rest' => true,
               "rewrite" => array( 'slug' => false, 'with_front'	=> false ),
               'supports' => array(
                 'title',
@@ -185,6 +226,7 @@ function wbmz_create_post_type() {
                 'excerpt',
                 'thumbnail',
                 'revisions',
+                'title-tag',
                 'page-attributes'
               ),
               'can_export' => true
@@ -209,6 +251,7 @@ function wbmz_create_post_type() {
                 'public' => true,
                 'hierarchical' => true,
                 'has_archive' => false,
+                'show_in_rest' => true,
                 "rewrite" => array( 'slug' => false, 'with_front'	=> false ),
                 'supports' => array(
                   'title',
@@ -217,6 +260,7 @@ function wbmz_create_post_type() {
                   'excerpt',
                   'thumbnail',
                   'revisions',
+                  'title-tag',
                   'page-attributes'
                 ),
                 'can_export' => true
@@ -235,3 +279,9 @@ function wbmz_create_post_type() {
  */
 }
 add_action('init', 'wbmz_create_post_type');
+
+// Zet de widget block editor uit
+function example_theme_support() {
+    remove_theme_support( 'widgets-block-editor' );
+}
+add_action( 'after_setup_theme', 'example_theme_support' );

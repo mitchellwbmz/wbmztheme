@@ -1,37 +1,35 @@
-// Use this file to customize Bootstrap variable - not only the ones you can set in the Customizer
-// To overwrite a Bootstrap variable you don´t have to touch the Bootstrap folder. 
-// Just uncomment and edit down below.
-
-
-// SOME EXPERIMENTS:
-//$navbar-dark-toggler-icon-bg: url('data:image/svg+xml, <svg class="bi bi-app-indicator" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">  <path fill-rule="evenodd" d="M5.5 2A3.5 3.5 0 002 5.5v5A3.5 3.5 0 005.5 14h5a3.5 3.5 0 003.5-3.5V8a.5.5 0 011 0v2.5a4.5 4.5 0 01-4.5 4.5h-5A4.5 4.5 0 011 10.5v-5A4.5 4.5 0 015.5 1H8a.5.5 0 010 1H5.5z" clip-rule="evenodd"/><path d="M16 3a3 3 0 11-6 0 3 3 0 016 0z"/></svg>') !default;
-//$navbar-brand-font-size:            3rem;
-
-
-//SOME CUSTOMIZATION FOR PICOSTRAP & LC
-
-//CUSTOM SPACING UP TO 8
-$spacer: 1rem !default;
+$spacer: 15px !default;
 $spacers: (
   0: 0,
-  1: $spacer / 4,
-  2: $spacer / 2,
-  3: $spacer,
-  4: $spacer * 1.5,
-  5: $spacer * 3,
-  6: ($spacer * 4.5),  //added
-  7: ($spacer * 6), //added
-  8: ($spacer * 7.5), //added
+  1: $spacer,
+  2: $spacer * 2,
+  3: $spacer * 3,
+  4: $spacer * 4,
+  5: $spacer * 5,
+  6: $spacer * 6,
+  7: $spacer * 7,
+  8: $spacer * 8,
+  9: $spacer * 9,
+  10: $spacer * 10,
+  11: $spacer * 11,
+  12: $spacer * 12,
+  13: $spacer * 13,
+  14: $spacer * 14,
+  15: $spacer * 15,
+
+
 
 ) !default;
 
 //ENABLE NEGATIVE MARGIN UTILITY CLASSES
 $enable-negative-margins: true;
- 
 
- 
+$dropdown-link-color:               $secondary !default;
+$dropdown-link-hover-color:         $primary !default;
+$dropdown-link-hover-bg:            $light !default;
+
 //////////////////////////////////////////////////
-//// FULL LIST OF  BS5 VARIABLES FOR YOUR COMFORT.  
+//// FULL LIST OF  BS5 VARIABLES FOR YOUR COMFORT.
 ///////////////////////////////////////////////////
 
 //
@@ -383,10 +381,10 @@ $enable-negative-margins: true;
 //// Set the number of columns and specify the width of the gutters.
 //
 //$grid-columns:                12 !default;
-//$grid-gutter-width:           1.5rem !default;
+$grid-gutter-width:           30px!default;
 //$grid-row-columns:            6 !default;
 //
-//$gutters: $spacers !default;
+$gutters: $spacers !default;
 //
 //// Container padding
 //
@@ -675,8 +673,8 @@ $enable-negative-margins: true;
 //$btn-disabled-opacity:        .65 !default;
 //$btn-active-box-shadow:       inset 0 3px 5px rgba($black, .125) !default;
 //
-//$btn-link-color:              $link-color !default;
-//$btn-link-hover-color:        $link-hover-color !default;
+$btn-link-color:              $light !default;
+$btn-link-hover-color:        $light !default;
 //$btn-link-disabled-color:     $gray-600 !default;
 //
 //// Allows for customizing button radius independently from global border radius

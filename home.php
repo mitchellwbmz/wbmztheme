@@ -4,9 +4,6 @@
 defined( 'ABSPATH' ) || exit;
 
 get_header();
-/*
-* Template name: Homepage template
-*/
 
 ?>
 <div class="container-fluid cntnt">

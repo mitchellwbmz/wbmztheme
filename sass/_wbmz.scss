@@ -1,4 +1,4 @@
- 
+
 /* ============ SOME SIMPLE UTILITIES  ============ */
 
 //RFS UTILITY: generate classes for responsive font sizes: from rfs-1 to rfs-50
@@ -8,15 +8,15 @@
 	}
 }
 
-//RWS UTILITY: generate classes for icon sizes: from rws-1 to rws-50  
+//RWS UTILITY: generate classes for icon sizes: from rws-1 to rws-50
  @for $j from 1 through 40 {
 	.rws-#{$j} {
 		//@include rfs(#{$j}* 1rem,width); //best version, but needs updating rfs module inside picostrap/dist
 		//width: #{$j}* 1rem; //standard alternative
-		width: calc(0.6rem + (#{$j})  * 0.1rem + (#{$j}) *  1.3vw); // some kind of responsiveness 
+		width: calc(0.6rem + (#{$j})  * 0.1rem + (#{$j}) *  1.3vw); // some kind of responsiveness
 	}
 }
-//MIN-VH UTILITIES 
+//MIN-VH UTILITIES
 .min-vh-10 {min-height: 10vh;}
 .min-vh-20 {min-height: 20vh;}
 .min-vh-30 {min-height: 30vh;}
@@ -38,7 +38,7 @@ body.picostrap_header_navbar_position_fixed-top #wpadminbar:hover {opacity:1}
 //body.admin-bar #wrapper-navbar nav {top:30px;}
 //body.admin-bar.picostrap_header_navbar_position_fixed-top {padding-top: 88px;}
 
-//FIX SVG LOGO 
+//FIX SVG LOGO
 .custom-logo-link img[src$='.svg'] {width:100%}
 
 //FIX SCROLL TO ANCHOR when using fixed header as per https://css-tricks.com/fixed-headers-and-jump-links-the-solution-is-scroll-margin-top/
@@ -51,12 +51,3 @@ body.picostrap_header_navbar_position_fixed-top section[id] {	scroll-margin-top:
 
 
 /* ============ BEFORE EDITING HERE YOU MAY WANT TO USE A CHILD THEME. THERE'S ONE EXAMPLE READY FOR YOU ============  */
-
-
- 
-
-
-
-
-
-

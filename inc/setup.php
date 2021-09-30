@@ -30,7 +30,7 @@ if ( ! function_exists( 'picostrap_setup' ) ) {
 		 * If you're building a theme based on picostrap, use a find and replace
 		 * to change 'picostrap' to the name of your theme in all the template files
 		 */
-		load_theme_textdomain( 'picostrap', get_template_directory() . '/languages' );
+		load_theme_textdomain( 'wbmz', get_template_directory() . '/languages' );
 
 		// Add default posts and comments RSS feed links to head.
 		add_theme_support( 'automatic-feed-links' );
@@ -106,7 +106,7 @@ if ( ! function_exists( 'picostrap_setup' ) ) {
 			)
 		);
 		*/
-		
+
 		// Set up the WordPress Theme logo feature.
 		add_theme_support( 'custom-logo' );
 
@@ -155,9 +155,9 @@ if ( ! function_exists( 'picostrap_all_excerpts_get_more_link' ) ) {
 	 */
 	function picostrap_all_excerpts_get_more_link( $post_excerpt ) {
 		if ( ! is_admin() ) {
-			$post_excerpt = $post_excerpt . '...<p class="text-right"><a class="btn btn-outline-secondary picostrap-read-more-link " href="' . esc_url( get_permalink( get_the_ID() ) ) . '">' . __(
-				'Read More...',
-				'picostrap'
+			$post_excerpt = $post_excerpt . '...<p class="text-right"><a class="btn btn-outline-secondary " href="' . esc_url( get_permalink( get_the_ID() ) ) . '">' . __(
+				'Lees meer...',
+				'wbmz'
 			) . '</a></p>';
 		}
 		return $post_excerpt;

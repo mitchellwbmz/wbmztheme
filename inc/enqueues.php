@@ -5,7 +5,7 @@ defined( 'ABSPATH' ) || exit;
 /*
 //ADD THE CSS BUNDLE
 function picostrap_enqueue_styles() {
-    
+
     ////// IF  RECOMPILED STYLE IS PRESENT, DISABLE THE ORDINARY STYLE AND ENQUEUE THE RECOMPILED ///
     $compiled_style_url=picostrap_get_compiled_css_url();
     //die($compiled_style_url);
@@ -24,10 +24,10 @@ add_action( 'wp_enqueue_scripts', 'picostrap_enqueue_styles' );
 
 function picostrap_get_css_url (){
     //onboarding
-    if(get_theme_mod("picostrap_scss_last_filesmod_timestamp",0)==0) return get_stylesheet_directory_uri() . '/'. picostrap_get_css_optional_subfolder_name() . picostrap_get_base_css_filename(); 
+    if(get_theme_mod("picostrap_scss_last_filesmod_timestamp",0)==0) return get_stylesheet_directory_uri() . '/'. picostrap_get_css_optional_subfolder_name() . picostrap_get_base_css_filename();
 
     //standard case
-    return get_stylesheet_directory_uri() . '/' . picostrap_get_css_optional_subfolder_name() . picostrap_get_complete_css_filename(); 
+    return get_stylesheet_directory_uri() . '/' . picostrap_get_css_optional_subfolder_name() . picostrap_get_complete_css_filename();
 
 }
 
@@ -40,7 +40,7 @@ if (!function_exists('picostrap_get_base_css_filename')):
 endif;
 
 if (!function_exists('picostrap_get_complete_css_filename')):
-    function picostrap_get_complete_css_filename() { 
+    function picostrap_get_complete_css_filename() {
         $filename = picostrap_get_base_css_filename();
         if (is_multisite()) $filename = str_replace('.', '-' . get_current_blog_id() . '.', $filename );
         return $filename;
@@ -54,21 +54,22 @@ endif;
 add_action( 'wp_enqueue_scripts',  function  () {
 
     //DETERMINE a VERSION NUMBER
-    if (current_user_can("administrator")) $version=rand(1,9999); else 
-        $version = intval((get_theme_mod("picostrap_scss_last_filesmod_timestamp")) % 999); 
-    
+    if (current_user_can("administrator")) $version=rand(1,9999); else
+        $version = intval((get_theme_mod("picostrap_scss_last_filesmod_timestamp")) % 999);
+
     //ENQUEUE THE CSS FILE
     wp_enqueue_style( 'picostrap-styles', picostrap_get_css_url(), array(), $version); //would be more elegant
-    
+
 });
 
 ///ADD THE MAIN JS FILE
 //enqueue js in footer, async
 add_action( 'wp_enqueue_scripts', function() {
 	wp_enqueue_script( 'bootstrap5',  "https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js#asyncload", array(), null, true );
+  //wp_enqueue_script( 'slickslider',  "https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js#asyncload", array(), null, true );
 } ,100);
 
-  
+
 
 //ADD THE CUSTOM HEADER CODE (SET IN CUSTOMIZER)
 add_action( 'wp_head', 'picostrap_add_header_code' );
@@ -100,6 +101,6 @@ function picostrap_async_scripts($url){
     else if ( is_admin() )
         return str_replace( '#asyncload', '', $url );
     else
-	return str_replace( '#asyncload', '', $url )."' async='async"; 
+	return str_replace( '#asyncload', '', $url )."' async='async";
     }
 add_filter( 'clean_url', 'picostrap_async_scripts', 11, 1 );

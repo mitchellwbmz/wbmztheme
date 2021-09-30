@@ -35,8 +35,8 @@ a {
 		background: $primary;
 	}
 }
-.dropdown-item:focus {
-	color: $primary!important;
+.dropdown-item:focus, .dropdown-item:active {
+	color: $primary;
 }
 .offcanvas {
 	top: 25%;

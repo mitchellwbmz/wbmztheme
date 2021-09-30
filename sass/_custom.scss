@@ -87,6 +87,28 @@ a {
 	font-size: 14px;
 	text-decoration: none!important;
 }
+.btn-primary {
+	background: $primary;
+	border-color: $primary;
+	color: $light;
+
+	&:hover {
+		background: $secondary;
+		border-color: $secondary;
+		color: $light;
+	}
+}
+.btn-secondary {
+	background: $secondary;
+	border-color: $secondary;
+	color: $light;
+
+	&:hover {
+		background: $primary;
+		border-color: $primary;
+		color: $light;
+	}
+}
 .btn-primary-darkbg {
 	background: $primary;
 	border-color: $primary;

@@ -368,8 +368,10 @@ body, html { overflow-x:hidden; }
 
 				.dropdown-item {
 					font-size: 90%;
+					background: transparent!important;
 					&:focus, &:active {
 						color: $primary;
+						background: transparent;
 					}
 				}
 				&.fade-down {

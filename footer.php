@@ -1,7 +1,4 @@
 </main>
-	<?php if (function_exists("lc_custom_footer")) lc_custom_footer(); else {
-		?>
-		<?php if (is_active_sidebar( 'footerfull' )): ?>
 		<div class="container-fluid ftr py-2">
 			<div class="container">
 				<div class="row">
@@ -20,7 +17,6 @@
 				</div>
 			</div>
 		</div>
-		<?php endif ?>
 		<div class="container-fluid ftrbtm pb-1">
 			<div class="container">
 				<div class="row">
@@ -36,14 +32,25 @@
 				</div>
 			</div>
 		</div>
-	<?php
-	} //END ELSE CASE ?>
 
 
 	<?php wp_footer(); ?>
 	<script src="https://kit.fontawesome.com/ec8e43c269.js" crossorigin="anonymous"></script>
 	<script src="//code.jquery.com/jquery-3.6.0.slim.min.js"></script>
 	<script src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+	<script src="//cdn.jsdelivr.net/npm/jquery-match-height@0.7.2/dist/jquery.matchHeight.min.js"></script>
+	<?php if (get_field('eq_script_laden','options')):?>
+	<script>
+	jQuery(function() {
+	<?php if ( have_rows( 'equal_height_classes', 'option' ) ) : ?>
+		<?php while ( have_rows( 'equal_height_classes', 'option' ) ) : the_row(); ?>
+			$('.<?php the_sub_field( 'class' ); ?>').matchHeight();
+		<?php endwhile; ?>
+	<?php else : ?>
+	<?php endif; ?>
+	});
+	</script>
+	<?php endif; ?>
 	<script>
 	 jQuery(document).ready(function($){
 		  $('.sldrsftwr').slick({

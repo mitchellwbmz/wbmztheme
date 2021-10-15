@@ -5,8 +5,8 @@ defined( 'ABSPATH' ) || exit;
 
 get_header();
 
-
-
+$posttype = get_post_type();
+if ( false === get_template_part( "post-templates/{$posttype}" )) {
 
 if ( have_posts() ) :
     while ( have_posts() ) : the_post(); ?>
@@ -65,9 +65,5 @@ if ( have_posts() ) :
  else :
      _e( 'Sorry, no posts matched your criteria.', 'wbmz' );
  endif;
- ?>
-
-
-
-
-<?php get_footer();
+ };
+get_footer();

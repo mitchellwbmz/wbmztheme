@@ -5,7 +5,7 @@ defined( 'ABSPATH' ) || exit;
 
 get_header();
 ?>
-<div class="container-fluid cntnt">
+<div class="container-fluid py-2">
 	<div class="container">
 	    <div class="row">
 	        <div class="col-12">

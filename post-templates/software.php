@@ -5,9 +5,6 @@ defined( 'ABSPATH' ) || exit;
 
 get_header();
 
-
-
-
 if ( have_posts() ) :
     while ( have_posts() ) : the_post(); ?>
 <div class="container-fluid cntnt py-2">
@@ -30,24 +27,24 @@ if ( have_posts() ) :
             </div>
             <div class="col-md-4">
               <div class="prdctnf p-2">
-              <?php $gekoppelde_software_posts = get_field('gekoppelde_software');
-              if( $gekoppelde_software_posts ): ?>
+              <?php $gekoppelde_producten_posts = get_field('gekoppelde_producten');
+              if( $gekoppelde_producten_posts ): ?>
                   <div class="text-center">
-                  <?php foreach( $gekoppelde_software_posts as $post ):
+                  <?php foreach( $gekoppelde_producten_posts as $post ):
                       setup_postdata($post); ?>
-                      <img src="<?php the_field('logo');?>" alt="<?php the_title(); ?>" class="w-100 mt-n10"/> <?php
+                      <img src="<?php the_field('logo');?>" alt="<?php the_title(); ?>" class="w-100"/> <?php
                       //the_post_thumbnail('medium', ['class' => 'w-100 mt-n10']);
                       //the_field('intro_tekst_software'); ?>
-                          <a href="<?php the_permalink(); ?>" class="btn btn-primary-darkbg"><?php the_field('button_tekst'); ?></a>
+                          <a href="<?php the_permalink(); ?>" class="btn btn-primary-darkbg">Meer informatie</a>
                   <?php endforeach; ?>
                   </div>
                   <?php wp_reset_postdata();
-                echo '<hr class="my-1 my-md-3"/>';
-                endif; ?>
+                  echo '<hr class="my-1 my-md-3"/>';
+              endif; ?>
               <?php $gekoppelde_trainingen_posts = get_field('gekoppelde_trainingen');
               $extra_tekst_trainingen = get_field('extra_tekst_trainingen');
               if( $gekoppelde_trainingen_posts ):
-                echo '<h3>'.get_the_title().' trainingen</h3>';
+                echo '<h3>Trainingen</h3>';
                 echo $extra_tekst_trainingen;?>
                   <ul>
                   <?php foreach( $gekoppelde_trainingen_posts as $post ):
@@ -57,11 +54,11 @@ if ( have_posts() ) :
                       </li>
                   <?php endforeach; ?>
                   </ul>
+                  <hr class="my-1 my-md-3"/>
                   <?php wp_reset_postdata(); ?>
               <?php endif; ?>
               <?php $gekoppelde_diensten_posts = get_field('gekoppelde_diensten');
               if( $gekoppelde_diensten_posts ): ?>
-              <hr class="my-1 my-md-3"/>
               <h3>Gerelateerde diensten</h3>
                   <ul>
                   <?php foreach( $gekoppelde_diensten_posts as $post ):

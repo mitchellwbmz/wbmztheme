@@ -1,6 +1,6 @@
 <?php
 /**
- * Template Name: Producten
+ * Template Name: Diensten
  **/
 
 // Exit if accessed directly.
@@ -29,7 +29,7 @@ get_header(); ?>
   <div class="container">
     <?php
     $args = array(
-      'post_type'		=> 'producten',
+      'post_type'		=> 'diensten',
       'posts_per_page'	=> -1
     );
     $posts = new WP_Query($args);
@@ -37,12 +37,8 @@ get_header(); ?>
     if($posts->have_posts()):?>
     <div class="row d-flex">
       <?php while($posts->have_posts()): $count++; $posts->the_post(); ?>
-      <?php if($count == 1): ?>
-      <div class="col-12 col-md-6 mb-2">
-      <?php else: ?>
-      <div class="col-12 col-md-3 mb-2">
-      <?php endif; ?>
-        <div class="whtblck py-2 px-1 h-100" id="prdct<?php echo get_the_ID(); ?>">
+      <div class="col-12 col-sm-6 col-md-4 mb-2">
+        <div class="whtblck py-2 px-1 h-100" id="dnst<?php echo get_the_ID(); ?>">
           <?php if(get_field('logo')):?>
             <div class="text-center">
               <img src="<?php the_field('logo'); ?>" alt="<?php the_title(); ?>" class="mb-1"/>
@@ -50,7 +46,7 @@ get_header(); ?>
           <?php endif; ?>
           <h3><?php the_title(); ?></h3>
           <div class="eq" style="margin-bottom: 15px;">
-            <?php the_field('intro_tekst_product'); ?>
+            <?php the_field('intro_tekst_dienst'); ?>
           </div>
           <a href="<?php the_permalink(); ?>" class="btn btn-outline-primary">Lees verder</a>
         </div>

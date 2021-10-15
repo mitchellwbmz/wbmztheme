@@ -298,8 +298,8 @@ if ( ! class_exists( 'WP_Bootstrap_Navwalker' ) ) :
 			if ( $this->has_children && 0 === $depth ) {
 				//$atts['href'] = '#';
         $atts['href'] = ! empty( $item->url ) ? $item->url : '#';
-        $atts['title']  = ! empty( $item->attr_title ) ? $item->attr_title.'<span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span>' : '';
-				//$atts['data-bs-toggle'] = 'dropdown';
+        $atts['title']  = ! empty( $item->attr_title ) ? $item->attr_title : '';
+				$atts['data-hover'] = 'dropdown';
 				//$atts['aria-haspopup'] = 'true';
 				//$atts['aria-expanded'] = 'false';
 				$atts['class'] = 'dropdown-toggle nav-link';

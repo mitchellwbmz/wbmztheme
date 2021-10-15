@@ -208,13 +208,13 @@ get_header(); ?>
     <?php while($posts->have_posts()): $count++; $posts->the_post(); ?>
       <div class="col-12 col-md-6 mb-1 mb-md-0">
         <div class="vctr p-1">
-          <h3><a href="<?php the_permalink() ?>"><?php the_title() ?></a> <i class="fas fa-arrow-right float-end"></i></h3>
+          <h3><a href="<?php the_permalink() ?>"><?php the_title() ?> <i class="fas fa-arrow-right float-end"></i></a></h3>
         </div>
       </div>
       <?php endwhile; wp_reset_query(); ?>
     <?php endif; ?>
     </div>
-    <div class="row d-flex align-items-center">
+    <div class="row d-flex align-items-center justify-content-center">
       <div class="col-2">
         <img src="/wp-content/uploads/2021/09/Paul-xantara-it.jpg" alt="Paul Kaijser, Database specialst"/>
       </div>

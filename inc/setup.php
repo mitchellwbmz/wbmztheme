@@ -13,9 +13,9 @@ if ( ! isset( $content_width ) ) {
 	$content_width = 640; /* pixels */
 }
 
-add_action( 'after_setup_theme', 'picostrap_setup' );
+add_action( 'after_setup_theme', 'wbmz_setup' );
 
-if ( ! function_exists( 'picostrap_setup' ) ) {
+if ( ! function_exists( 'wbmz_setup' ) ) {
 	/**
 	 * Sets up theme defaults and registers support for various WordPress features.
 	 *
@@ -23,7 +23,7 @@ if ( ! function_exists( 'picostrap_setup' ) ) {
 	 * runs before the init hook. The init hook is too late for some features, such
 	 * as indicating support for post thumbnails.
 	 */
-	function picostrap_setup() {
+	function wbmz_setup() {
 		/*
 		 * Make theme available for translation.
 		 * Translations can be filed in the /languages/ directory.
@@ -46,8 +46,8 @@ if ( ! function_exists( 'picostrap_setup' ) ) {
 		// This theme uses wp_nav_menu() in one location.
 		register_nav_menus(
 			array(
-				'primary' => __( 'Primary Menu', 'picostrap' ),
-				'secondary' => __( 'Secondary Menu', 'picostrap' ),
+				'primary' => __( 'Hoofdmenu', 'wbmz' ),
+				'secondary' => __( 'Secondair menu', 'wbmz' ),
 			)
 		);
 
@@ -98,7 +98,7 @@ if ( ! function_exists( 'picostrap_setup' ) ) {
 		add_theme_support(
 			'custom-background',
 			apply_filters(
-				'picostrap_custom_background_args',
+				'wbmz_custom_background_args',
 				array(
 					'default-color' => 'ffffff',
 					'default-image' => '',
@@ -114,7 +114,7 @@ if ( ! function_exists( 'picostrap_setup' ) ) {
 		add_theme_support( 'responsive-embeds' );
 
 		// Check and setup theme default settings.
-		picostrap_setup_theme_default_settings();
+		wbmz_setup_theme_default_settings();
 
 	}
 }
@@ -125,9 +125,9 @@ add_filter("excerpt_length",function($in){
 
 
 
-add_filter( 'excerpt_more', 'picostrap_custom_excerpt_more' );
+add_filter( 'excerpt_more', 'wbmz_custom_excerpt_more' );
 
-if ( ! function_exists( 'picostrap_custom_excerpt_more' ) ) {
+if ( ! function_exists( 'wbmz_custom_excerpt_more' ) ) {
 	/**
 	 * Removes the ... from the excerpt read more link
 	 *
@@ -135,7 +135,7 @@ if ( ! function_exists( 'picostrap_custom_excerpt_more' ) ) {
 	 *
 	 * @return string
 	 */
-	function picostrap_custom_excerpt_more( $more ) {
+	function wbmz_custom_excerpt_more( $more ) {
 		if ( ! is_admin() ) {
 			$more = '';
 		}
@@ -143,9 +143,9 @@ if ( ! function_exists( 'picostrap_custom_excerpt_more' ) ) {
 	}
 }
 
-add_filter( 'wp_trim_excerpt', 'picostrap_all_excerpts_get_more_link' );
+add_filter( 'wp_trim_excerpt', 'wbmz_all_excerpts_get_more_link' );
 
-if ( ! function_exists( 'picostrap_all_excerpts_get_more_link' ) ) {
+if ( ! function_exists( 'wbmz_all_excerpts_get_more_link' ) ) {
 	/**
 	 * Adds a custom read more link to all excerpts, manually or automatically generated
 	 *
@@ -153,7 +153,7 @@ if ( ! function_exists( 'picostrap_all_excerpts_get_more_link' ) ) {
 	 *
 	 * @return string
 	 */
-	function picostrap_all_excerpts_get_more_link( $post_excerpt ) {
+	function wbmz_all_excerpts_get_more_link( $post_excerpt ) {
 		if ( ! is_admin() ) {
 			$post_excerpt = $post_excerpt . '...<p class="text-right"><a class="btn btn-outline-secondary " href="' . esc_url( get_permalink( get_the_ID() ) ) . '">' . __(
 				'Lees meer...',

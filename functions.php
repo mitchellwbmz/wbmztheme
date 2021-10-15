@@ -17,7 +17,7 @@ $wbmz_includes = array(
 	'/facetwp.php',                      		// Custom FacetWP code
 	'/gforms.php',                      		// Custom Gravity forms code
 	'/custom-comments.php',                 // Custom reacties
-	'/class-wp-bootstrap-navwalker.php',    // Custom WordPress nav walker. Diepere navigatie? --> https://github.com/picostrap/picostrap/issues/567
+	'/class-wp-bootstrap-navwalker.php',    // Custom WordPress nav walker
 	'/woocommerce.php',                     // Custom WooCommerce functies
 	'/editor.php',                          // Custom editor functies
 	'/customizer-assets/customizer.php',		// Customizer instellingen

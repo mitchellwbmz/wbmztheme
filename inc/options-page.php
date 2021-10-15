@@ -1,9 +1,9 @@
 <?php
 
-function add_picostrap_theme_page() {
+function add_wbmz_theme_page() {
     add_theme_page( 'Thema admin opties', 'Thema admin', 'edit_theme_options', 'picostrap-theme-options', 'theme_option_page' );
 }
-add_action( 'admin_menu', 'add_picostrap_theme_page' );
+add_action( 'admin_menu', 'add_wbmz_theme_page' );
 
 function theme_option_page() {
 
@@ -154,7 +154,7 @@ function pico_process_settings_export() {
 	$settings = array();
 
     foreach (get_theme_mods() as $setting_name => $setting_value):
-        if ($setting_name=="picostrap_scss_last_filesmod_timestamp") continue;
+        if ($setting_name=="wbmz_scss_last_filesmod_timestamp") continue;
         if ($setting_name=="custom_css_post_id") continue;
         $settings[$setting_name]=$setting_value;
     endforeach;

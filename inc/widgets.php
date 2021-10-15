@@ -2,7 +2,7 @@
 /**
  * Declaring widgets
  *
- * @package picostrap
+ * @package wbmz
  */
 
 // Exit if accessed directly.
@@ -14,9 +14,9 @@ defined( 'ABSPATH' ) || exit;
  *
  * @link https://developer.wordpress.org/reference/hooks/dynamic_sidebar_params/
  */
-add_filter( 'dynamic_sidebar_params', 'picostrap_widget_classes' );
+add_filter( 'dynamic_sidebar_params', 'wbmz_widget_classes' );
 
-if ( ! function_exists( 'picostrap_widget_classes' ) ) {
+if ( ! function_exists( 'wbmz_widget_classes' ) ) {
 
 	/**
 	 * Count number of visible widgets in a sidebar and add classes to widgets accordingly,
@@ -49,7 +49,7 @@ if ( ! function_exists( 'picostrap_widget_classes' ) ) {
 	 * }
 	 * @return array $params
 	 */
-	function picostrap_widget_classes( $params ) {
+	function wbmz_widget_classes( $params ) {
 
 		global $sidebars_widgets;
 
@@ -71,15 +71,15 @@ if ( ! function_exists( 'picostrap_widget_classes' ) ) {
 		return $params;
 
 	}
-} // End of if function_exists( 'picostrap_widget_classes' ).
+} // End of if function_exists( 'wbmz_widget_classes' ).
 
-add_action( 'widgets_init', 'picostrap_widgets_init' );
+add_action( 'widgets_init', 'wbmz_widgets_init' );
 
-if ( ! function_exists( 'picostrap_widgets_init' ) ) {
+if ( ! function_exists( 'wbmz_widgets_init' ) ) {
 	/**
 	 * Initializes themes widgets.
 	 */
-	function picostrap_widgets_init() {
+	function wbmz_widgets_init() {
 		/*
 		register_sidebar(
 			array(
@@ -218,4 +218,4 @@ if ( ! function_exists( 'picostrap_widgets_init' ) ) {
 
 
 	}
-} // End of function_exists( 'picostrap_widgets_init' ).
+} // End of function_exists( 'wbmz_widgets_init' ).

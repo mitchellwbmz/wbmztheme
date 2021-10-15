@@ -131,16 +131,16 @@ function ps_prepare_fonts_import_code_snippet(){
 		$("#customize-control-enable_back_to_top").prepend(" <h1>Opt-in extra features</h1><hr> ");
 		
 		//add codemirror to header field - does not work
-		//wp.codeEditor.initialize(jQuery('#_customize-input-picostrap_header_code'));
+		//wp.codeEditor.initialize(jQuery('#_customize-input-wbmz_header_code'));
 		
 		//ON MOUSEDOWN ON PUBLISH / SAVE BUTTON, (before saving)  PREPARE THE HTML CODE FOR FONT IMPORT AND UPDATE FIELD FOR PASSING TO BACKEND
 		$("body").on("mousedown", "#customize-save-button-wrapper #save", function() {
-			$("#_customize-input-picostrap_fonts_header_code").val(ps_prepare_fonts_import_code_snippet()).change();
+			$("#_customize-input-wbmz_fonts_header_code").val(ps_prepare_fonts_import_code_snippet()).change();
 		});			
 		
 		//LISTEN TO CUSTOMIZER CHANGES: if some variable is changed, we'll have to recompile
 		wp.customize.bind( 'change', function ( setting ) {
-			if (setting.id.includes("SCSSvar")  || setting.id.includes("body_font")   || setting.id.includes("headings_font")  || setting.id.includes("picostrap_fontawesome_disable") ) scss_recompile_is_necessary=true;
+			if (setting.id.includes("SCSSvar")  || setting.id.includes("body_font")   || setting.id.includes("headings_font")  || setting.id.includes("wbmz_fontawesome_disable") ) scss_recompile_is_necessary=true;
 		});
 		
 		//AFTER PUBLISHING CUSTOMIZER CHANGES
@@ -209,11 +209,11 @@ function ps_prepare_fonts_import_code_snippet(){
 		
 		// ON CHANGE OF NEW FONT FAMILY FIELD 
 		$("body").on("change", "#_customize-input-SCSSvar_font-family-base", function() { //reset legacy font select
-			$('select[data-customize-setting-link="picostrap_body_font"] option:first').attr('selected', 'selected').change();
+			$('select[data-customize-setting-link="wbmz_body_font"] option:first').attr('selected', 'selected').change();
 		});
 		// ON CHANGE OF NEW FONT HEADING FIELD 
 		$("body").on("change", "#_customize-input-SCSSvar_headings-font-family", function() { //reset legacy font select
-			$('select[data-customize-setting-link="picostrap_headings_font"] option:first').attr('selected', 'selected').change();
+			$('select[data-customize-setting-link="wbmz_headings_font"] option:first').attr('selected', 'selected').change();
 		});
 		
 		
@@ -351,17 +351,17 @@ function ps_prepare_fonts_import_code_snippet(){
 
 	/*
 
-	function picostrap_make_customizations_to_customizer(){
+	function wbmz_make_customizations_to_customizer(){
 
 	//$("#sub-accordion-section-colors").append("HEELLLOO");
 
 	$('iframe').on('load', function(){
-	picostrap_highlight_menu();
+	wbmz_highlight_menu();
 	});
 
 	}
 
-	function picostrap_highlight_menu() {
+	function wbmz_highlight_menu() {
 
 	if($("iframe").contents().find("body").hasClass("archive")) {
 	jQuery("li#accordion-section-archives h3").css("background","#ffcc99");
@@ -377,7 +377,7 @@ function ps_prepare_fonts_import_code_snippet(){
 	}
 
 	setTimeout(function(){
-	picostrap_make_customizations_to_customizer();
+	wbmz_make_customizations_to_customizer();
 
 	}, 1000);
 

@@ -10,8 +10,8 @@ defined( 'ABSPATH' ) || exit;
 add_action("admin_init", function (){
 	if (!current_user_can("administrator")) return; //ADMINS ONLY
 	
-	if (isset($_GET['ps_compile_scss'])) {		picostrap_generate_css();		die();	}
-	if (isset($_GET['ps_reset_theme'])) {		remove_theme_mods(); 	echo ("Theme Options Reset.<br>");	picostrap_generate_css();		die(); }
+	if (isset($_GET['ps_compile_scss'])) {		wbmz_generate_css();		die();	}
+	if (isset($_GET['ps_reset_theme'])) {		remove_theme_mods(); 	echo ("Theme Options Reset.<br>");	wbmz_generate_css();		die(); }
 	if (isset($_GET['ps_show_mods'])){		print_r(get_theme_mods());		wp_die();	}
 });
 
@@ -20,14 +20,14 @@ use ScssPhp\ScssPhp\Compiler; //https://scssphp.github.io/scssphp/docs/
 
 
 //SOME UTILITIES
-function picostrap_get_active_parent_theme_slug(){ $style_parent_theme = wp_get_theme(get_template()); $theme_name = $style_parent_theme->get('Name'); return sanitize_title($theme_name);}
+function wbmz_get_active_parent_theme_slug(){ $style_parent_theme = wp_get_theme(get_template()); $theme_name = $style_parent_theme->get('Name'); return sanitize_title($theme_name);}
 
-//function picostrap_get_upload_dir( $param, $subfolder = '' ) {    $upload_dir = wp_upload_dir();    $url = $upload_dir[ $param ];    if ( $param === 'baseurl' && is_ssl() )  $url = str_replace( 'http://', 'https://', $url );return $url . $subfolder; }
-//function picostrap_get_active_theme_slug(){ return get_stylesheet(); } 
+//function wbmz_get_upload_dir( $param, $subfolder = '' ) {    $upload_dir = wp_upload_dir();    $url = $upload_dir[ $param ];    if ( $param === 'baseurl' && is_ssl() )  $url = str_replace( 'http://', 'https://', $url );return $url . $subfolder; }
+//function wbmz_get_active_theme_slug(){ return get_stylesheet(); } 
 
 
 /////FUNCTION TO GET ACTIVE SCSS CODE FROM FILE ///////
-function picostrap_get_active_scss_code(){
+function wbmz_get_active_scss_code(){
 	
 	//INIT WP FILESYSTEM 
 	global $wp_filesystem;
@@ -40,14 +40,14 @@ function picostrap_get_active_scss_code(){
 	$the_scss_code = $wp_filesystem->get_contents('../wp-content/themes/'.get_stylesheet().'/sass/main.scss');  
 
 	//FOR STYLE PACKAGES
-	if(function_exists("picostrap_alter_scss")) $the_scss_code = picostrap_alter_scss ($the_scss_code);	 
+	if(function_exists("wbmz_alter_scss")) $the_scss_code = wbmz_alter_scss ($the_scss_code);	 
 	
 	return $the_scss_code;
 }
 
  
 /////FUNCTION TO RECOMPILE THE CSS ///////
-function picostrap_generate_css(){
+function wbmz_generate_css(){
 	
 	//INITIALIZE COMPILER
 	require_once "scssphp/scss.inc.php";
@@ -58,10 +58,10 @@ function picostrap_generate_css(){
 		$scss->setImportPaths(WP_CONTENT_DIR.'/themes/'.get_stylesheet().'/sass/');
 
 		//IF USING A CHILD THEME, add parent theme sass folder: picostrap
-		if (is_child_theme()) $scss->addImportPath(WP_CONTENT_DIR.'/themes/'.picostrap_get_active_parent_theme_slug().'/sass/');
+		if (is_child_theme()) $scss->addImportPath(WP_CONTENT_DIR.'/themes/'.wbmz_get_active_parent_theme_slug().'/sass/');
 		
 		//add extra path for style packages
-		if(function_exists("picostrap_add_scss_import_path")) $scss->addImportPath(picostrap_add_scss_import_path());
+		if(function_exists("wbmz_add_scss_import_path")) $scss->addImportPath(wbmz_add_scss_import_path());
 		
 		//SET OUTPUT FORMATTING
 		$scss->setFormatter('ScssPhp\ScssPhp\Formatter\Crunched');
@@ -70,10 +70,10 @@ function picostrap_generate_css(){
 		//$scss->setSourceMap(Compiler::SOURCE_MAP_INLINE);
 		
 		//SET SCSS VARIABLES
-		$scss->setVariables(picostrap_get_active_scss_variables_array());
+		$scss->setVariables(wbmz_get_active_scss_variables_array());
 		
 		//NOW COMPILE
-		$compiled_css = $scss->compile(picostrap_get_active_scss_code());
+		$compiled_css = $scss->compile(wbmz_get_active_scss_code());
 	
 	} catch (Exception $e) {
 		//COMPILER ERROR: TYPICALLY INVALID SCSS CODE
@@ -94,19 +94,19 @@ function picostrap_generate_css(){
 	}
 
 	//SAVE THE FILE
-	$saving_operation = $wp_filesystem->put_contents('../wp-content/themes/'.get_stylesheet() . '/' . picostrap_get_css_optional_subfolder_name() . picostrap_get_complete_css_filename(), $compiled_css, FS_CHMOD_FILE ); // , 0644 ?
+	$saving_operation = $wp_filesystem->put_contents('../wp-content/themes/'.get_stylesheet() . '/' . wbmz_get_css_optional_subfolder_name() . wbmz_get_complete_css_filename(), $compiled_css, FS_CHMOD_FILE ); // , 0644 ?
 	
 	if ($saving_operation) { // IF UPLOAD WAS SUCCESSFUL 
 
 		//SET TIMESTAMP
-		set_theme_mod("picostrap_scss_last_filesmod_timestamp",picostrap_get_scss_last_filesmod_timestamp());
+		set_theme_mod("wbmz_scss_last_filesmod_timestamp",wbmz_get_scss_last_filesmod_timestamp());
 
 		//GIVE POSITIVE FEEDBACK	
 		if (isset($_GET['ps_compiler_api'])) {
-			echo "New CSS bundle: " . picostrap_get_css_url();
+			echo "New CSS bundle: " . wbmz_get_css_url();
 		} else {		
 			echo "File was successfully uploaded<br><br>";
-			echo "<a href='".picostrap_get_css_url()."' target='new'>View File</a>";
+			echo "<a href='".wbmz_get_css_url()."' target='new'>View File</a>";
 			echo "<br><br><b>Size: </b><br>".round(mb_strlen($compiled_css, '8bit')/1000)." kB - ".round(mb_strlen(gzcompress($compiled_css), '8bit')/1000)." kB gzipped";
 		}
 
@@ -127,7 +127,7 @@ function picostrap_generate_css(){
 
 
 /////FUNCTION TO GET VARIABLES USED IN CUSTOMIZER /////
-function picostrap_get_active_scss_variables_array(){
+function wbmz_get_active_scss_variables_array(){
 	$output_array=array();
 	if (get_theme_mods()) foreach(get_theme_mods() as $theme_mod_name => $theme_mod_value):
 		
@@ -149,18 +149,18 @@ function picostrap_get_active_scss_variables_array(){
 
 
 // FORCE CSS REBUILD UPON ENABLING CHILD THEME 
-add_action( 'after_switch_theme', 'picostrap_force_css_rebuilding', 10, 2 ); 
-function picostrap_force_css_rebuilding() {   
-    remove_theme_mod("picostrap_scss_last_filesmod_timestamp");
+add_action( 'after_switch_theme', 'wbmz_force_css_rebuilding', 10, 2 ); 
+function wbmz_force_css_rebuilding() {   
+    remove_theme_mod("wbmz_scss_last_filesmod_timestamp");
 }
 
 
 // MIGRATE TO NEW SAVING MECHANISM:: FORCE CSS REBUILD UPON upgrading from <1.3 
-add_action( 'init', 'picostrap_migrate_to_new_saving_check', 10, 2 ); 
-function picostrap_migrate_to_new_saving_check() { 
-	if ( get_theme_mod("picostrap_css_bundle_wp_relative_upload_path")):
-    	remove_theme_mod("picostrap_scss_last_filesmod_timestamp");
-		remove_theme_mod("picostrap_css_bundle_wp_relative_upload_path");
+add_action( 'init', 'wbmz_migrate_to_new_saving_check', 10, 2 ); 
+function wbmz_migrate_to_new_saving_check() { 
+	if ( get_theme_mod("wbmz_css_bundle_wp_relative_upload_path")):
+    	remove_theme_mod("wbmz_scss_last_filesmod_timestamp");
+		remove_theme_mod("wbmz_css_bundle_wp_relative_upload_path");
 	endif;
 }
 

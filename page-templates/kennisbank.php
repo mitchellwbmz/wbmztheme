@@ -31,9 +31,11 @@ get_header(); ?>
 		<div class="row">
 			<div class="col-12 col-md-9">
 				<?php
+				$paged = ( get_query_var( 'paged' ) ) ? get_query_var( 'paged' ) : 1;
 				$args = array(
 				  'post_type'		=> 'post',
-				  'posts_per_page'	=> 8
+				  'posts_per_page'	=> 5,
+				  'paged' => $paged
 				);
 				$posts = new WP_Query($args);
 				$count = 0;
@@ -42,7 +44,8 @@ get_header(); ?>
 				<div class="knsrtl">
 				  <a href="<?php the_permalink(); ?>"><i class="fas fa-circle"></i> <?php the_title(); ?></a>
 				</div>
-				<?php endwhile; wp_reset_query(); endif; ?>
+				<?php endwhile; wp_reset_query(); endif; 
+				echo wbmz_pagination(); ?>
 			</div>
 			<div class="col-12 col-md-3">
 				<?php dynamic_sidebar( 'sidebar' ); ?>

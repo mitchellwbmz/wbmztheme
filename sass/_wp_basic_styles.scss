@@ -1216,6 +1216,9 @@ pre.wp-block-verse {
 		flex-basis: 50%;
 		flex-grow: 0;
 	}
+	@media (max-width: 767px) {
+		flex-basis: 100%!important;
+	}
 
 } // .wp-block-column
 
@@ -1239,7 +1242,14 @@ pre.wp-block-verse {
 
 } // @media (min-width:600px)
 
-
+@media (max-width: 767px) {
+	.wp-block-column:not(:first-child) {
+		margin-left: 0px!important;
+	}
+	.wp-block-column:not(:last-child) {
+		margin-right: 0px!important;
+	}
+}
 /**
  * 13.0 - Font Size
  */

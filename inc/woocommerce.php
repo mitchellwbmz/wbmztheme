@@ -63,7 +63,7 @@ if ( ! function_exists( 'wbmz_woocommerce_wrapper_end' ) ) {
 		echo '</div> ';
 		echo '</div><!-- WooCommerce Wrapper end -->';
 	}
-	
+
 }
 
 if ( ! function_exists( 'wbmz_wc_form_field_args' ) ) {
@@ -182,3 +182,41 @@ if ( ! function_exists( 'wbmz_quantity_input_classes' ) ) {
 		return $classes;
 	}
 }
+
+add_action('wp_footer', 'wbmz_auto_update_cart');
+function wbmz_auto_update_cart(){
+?>
+<script>
+var timeout;
+
+jQuery( function( $ ) {
+	$('.woocommerce').on('change', 'input.qty', function(){
+
+		if ( timeout !== undefined ) {
+			clearTimeout( timeout );
+		}
+
+		timeout = setTimeout(function() {
+			$("[name='update_cart']").trigger("click");
+		}, 1000 ); // 1 second delay, half a second (500) seems comfortable too
+
+	});
+} );
+</script>
+<?php
+};
+
+add_filter( 'woocommerce_add_to_cart_fragments', function($fragments) {
+
+    ob_start();
+    ?>
+
+    <span class="badge">
+        <?php echo WC()->cart->get_cart_contents_count(); /*?> - <?php echo WC()->cart->get_cart_total(); */?>
+    </span>
+
+    <?php $fragments['span.badge'] = ob_get_clean();
+
+    return $fragments;
+
+} );

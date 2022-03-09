@@ -62,7 +62,7 @@ function my_login_logo() { ?>
 add_action( 'login_enqueue_scripts', 'my_login_logo' );
 
 function wbmz_create_post_type() {
-	register_post_type('diensten',
+	/*register_post_type('diensten',
         array(
         'labels' => array(
             'name' => __('Diensten', 'wbmz'),
@@ -264,7 +264,7 @@ function wbmz_create_post_type() {
                   'page-attributes'
                 ),
                 'can_export' => true
-            ));
+            ));*/
 
 /*
     register_taxonomy("dienst_cats",
